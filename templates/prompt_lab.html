@@ -13,23 +13,23 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='prompt_lab/prompt_lab.css') }}">
 
-<div class="prompt-form">
+<div class="prompt-form" style="text-align: center;">
 
   <!-- Quiz Selector -->
   <label for="quizSelect">Select Quiz:</label>
-  <select id="quizSelect">
+  <select id="quizSelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <!-- Quizzes will be loaded from DB -->
   </select>
 
   <!-- Personality Type Selector -->
   <label for="personalitySelect">Select Personality Type:</label>
-  <select id="personalitySelect">
+  <select id="personalitySelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <!-- Options will be dynamically loaded based on quiz -->
   </select>
 
   <!-- Language Selector -->
   <label for="languageSelect">Select Language:</label>
-  <select id="languageSelect">
+  <select id="languageSelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <option value="English">English</option>
     <option value="Chinese">Chinese</option>
   </select>
@@ -48,7 +48,7 @@
 
   <!-- Expected Format Selector -->
   <label for="formatSelect">Expected Output Format:</label>
-  <select id="formatSelect">
+  <select id="formatSelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <option value="poetry">Poetic</option>
     <option value="keywords">Keywords</option>
   </select>

@@ -13,6 +13,25 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .animated-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,0,150,0.5), rgba(0,204,255,0.5), rgba(0,255,135,0.5));
+      background-size: 200% 200%;
+      animation: moveBackground 5s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     .login-box {
@@ -24,6 +43,8 @@
       border-radius: 20px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
+      position: relative;
+      z-index: 1;
     }
 
     .login-box h2 {
@@ -81,6 +102,7 @@
   </style>
 </head>
 <body>
+  <div class="animated-background"></div>
   <div class="login-box">
     <h2>Login</h2>
     <form method="POST">

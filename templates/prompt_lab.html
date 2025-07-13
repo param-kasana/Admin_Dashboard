@@ -13,41 +13,41 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='prompt_lab/prompt_lab.css') }}">
 
-<div class="prompt-form" style="text-align: center;">
+<div class="prompt-form">
 
   <!-- Quiz Selector -->
-  <label for="quizSelect">Select Quiz:</label>
+  <label for="quizSelect" style="text-align: left; font-family: Arial, sans-serif;">Select Quiz:</label>
   <select id="quizSelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <!-- Quizzes will be loaded from DB -->
   </select>
 
   <!-- Personality Type Selector -->
-  <label for="personalitySelect">Select Personality Type:</label>
+  <label for="personalitySelect" style="text-align: left; font-family: Arial, sans-serif;">Select Personality Type:</label>
   <select id="personalitySelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <!-- Options will be dynamically loaded based on quiz -->
   </select>
 
   <!-- Language Selector -->
-  <label for="languageSelect">Select Language:</label>
+  <label for="languageSelect" style="text-align: left; font-family: Arial, sans-serif;">Select Language:</label>
   <select id="languageSelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <option value="English">English</option>
     <option value="Chinese">Chinese</option>
   </select>
 
   <!-- Prompt input -->
-  <label for="promptInput">Prompt Text:</label>
+  <label for="promptInput" style="text-align: left; font-family: Arial, sans-serif;">Prompt Text:</label>
   <textarea id="promptInput" placeholder="Enter your prompt here..." required></textarea>
   
   <!-- LLM model selection -->
   <div class="model-selection">
-    <label>Select LLM Model:</label>
+    <label style="text-align: left; font-family: Arial, sans-serif;">Select LLM Model:</label>
     <div class="checkboxes" id="llmCheckboxes">
       <!-- LLM checkboxes will be populated via JS -->
     </div>
   </div>
 
   <!-- Expected Format Selector -->
-  <label for="formatSelect">Expected Output Format:</label>
+  <label for="formatSelect" style="text-align: left; font-family: Arial, sans-serif;">Expected Output Format:</label>
   <select id="formatSelect" style="width: 50%; background-color: #f0f8ff; border-radius: 8px;">
     <option value="poetry">Poetic</option>
     <option value="keywords">Keywords</option>

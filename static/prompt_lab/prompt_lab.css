@@ -1,0 +1,172 @@
+.prompt-form {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  #promptInput {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .model-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .checkboxes label {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 14px;
+  }
+  
+  button {
+    background-color: #181d49;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  #outputSection {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    margin-top: 20px;
+  }
+  
+  .model-output {
+    margin-bottom: 20px;
+    padding: 12px;
+    border-left: 5px solid #ccc;
+    background: #fff;
+    border-radius: 6px;
+  }
+  
+  .model-output h3 {
+    margin-top: 0;
+  }
+  
+  .model-output ul {
+    padding-left: 20px;
+  }
+  
+  .error {
+    color: red;
+  }
+  
+  .recent-prompts {
+    margin-top: 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .recent-prompts h2 {
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  #currentPromptTable,
+#previousPromptTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+#currentPromptTable thead,
+#previousPromptTable thead {
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ccc;
+}
+
+#currentPromptTable th,
+#currentPromptTable td,
+#previousPromptTable th,
+#previousPromptTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+}
+
+#currentPromptTable th,
+#previousPromptTable th {
+  font-weight: 600;
+  color: #444;
+}
+
+#currentPromptTable td,
+#previousPromptTable td {
+  color: #333;
+}
+
+#currentPromptTable tr:hover,
+#previousPromptTable tr:hover {
+  background-color: #f9f9f9;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}

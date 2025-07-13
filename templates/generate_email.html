@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}Generate Email Content{% endblock %}
+{% block content %}
+
+<div class="generate-email-container">
+  <div class="form-section">
+      
+      <div class="section-title">Generate Email Content</div>
+
+      <div class="form-row" style="display: flex; gap: 20px; align-items: flex-start;">
+        <div class="form-group" style="flex: 1;">
+          <label for="quiz_type">Quiz Type</label>
+          <select id="quiz_type" name="quiz_type" required>
+            <option value="">-- Select Quiz Type --</option>
+          </select>
+        </div>
+        <div class="form-group" style="flex: 1;">
+          <label for="personality_type">Personality Type</label>
+          <select id="personality_type" name="personality_type" required>
+            <option value="">-- Select Personality Type --</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Select AI Model(s) for Generation (At least one required)</label>
+        <div id="llm_checkbox_container_generate" class="llm-checkboxes">
+            <!-- LLM Checkboxes will be populated by JS -->
+            <p><em>Loading AI models...</em></p>
+        </div>
+      </div>
+
+      <label for="temperature_slider" style="margin-top: 15px;">Temperature (Creativity): <span id="temperature_value_display">0.7</span></label>
+      <input type="range" id="temperature_slider" name="temperature" min="1" max="10" value="7" class="slider" style="width: 100%; margin-bottom: 15px;">
+
+      <label for="prompt_text">Prompt</label>
+      <textarea id="prompt_text" name="prompt_text" rows="4" placeholder="e.g., Write a friendly follow-up email..."></textarea>
+
+      <button type="button" id="generate_email_button" class="button-primary">Generate Email</button>
+      <span id="generation_status" style="margin-left: 10px;"></span>
+      
+      <div id="generation_output_area">
+          <label for="generated_body_single" style="margin-top: 15px; display:none;" id="single_output_label">Generated Email Body (Not Saved)</label>
+          <textarea id="generated_body_single" name="generated_body_single" rows="8" placeholder="Generated email content..." style="display:none;"></textarea>
+          
+          <div id="multiple_outputs_container" style="margin-top: 15px; display:none;">
+              <!-- Multiple outputs will be populated here by JS -->
+          </div>
+      </div>
+
+  </div>
+</div>
+
+<!-- Current and Previous Prompts Tables -->
+<h2>Current Prompts</h2> 
+<table id="currentPromptTable"><thead><tr><th>Quiz</th><th>Personality</th><th>Type</th><th>Prompt</th><th>LLM</th></tr></thead><tbody></tbody></table>
+<h2>Previous Prompts</h2>
+<table id="previousPromptTable"><thead><tr><th>Quiz</th><th>Personality</th><th>Type</th><th>Prompt</th><th>LLM</th><th>Version</th><th>Action</th></tr></thead><tbody></tbody></table>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='prompt_lab/generate_email.css') }}">
+<script src="{{ url_for('static', filename='prompt_lab/generate_email.js') }}"></script>
+{% endblock %}

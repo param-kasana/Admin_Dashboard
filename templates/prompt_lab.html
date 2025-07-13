@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block title %}Prompt Lab{% endblock %}
+{% block content %}
+<div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 10px;">
+  <label class="switch">
+    <input type="checkbox" id="aiToggle">
+    <span class="slider round"></span>
+  </label>
+  <span id="aiToggleLabel" style="margin-left: 8px; font-size: 14px;"></span>
+</div>
+
+<h1>Prompt Studio</h1>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='prompt_lab/prompt_lab.css') }}">
+
+<div class="prompt-form">
+
+  <!-- Quiz Selector -->
+  <label for="quizSelect">Select Quiz:</label>
+  <select id="quizSelect">
+    <!-- Quizzes will be loaded from DB -->
+  </select>
+
+  <!-- Personality Type Selector -->
+  <label for="personalitySelect">Select Personality Type:</label>
+  <select id="personalitySelect">
+    <!-- Options will be dynamically loaded based on quiz -->
+  </select>
+
+  <!-- Language Selector -->
+  <label for="languageSelect">Select Language:</label>
+  <select id="languageSelect">
+    <option value="English">English</option>
+    <option value="Chinese">Chinese</option>
+  </select>
+
+  <!-- Prompt input -->
+  <label for="promptInput">Prompt Text:</label>
+  <textarea id="promptInput" placeholder="Enter your prompt here..." required></textarea>
+  
+  <!-- LLM model selection -->
+  <div class="model-selection">
+    <label>Select LLM Model:</label>
+    <div class="checkboxes" id="llmCheckboxes">
+      <!-- LLM checkboxes will be populated via JS -->
+    </div>
+  </div>
+
+  <!-- Expected Format Selector -->
+  <label for="formatSelect">Expected Output Format:</label>
+  <select id="formatSelect">
+    <option value="poetry">Poetic</option>
+    <option value="keywords">Keywords</option>
+  </select>
+
+  <!-- Action Buttons -->
+  <div style="margin-top: 1rem;">
+    <button onclick="runPrompt()">Submit Prompt</button>
+  </div>
+
+  <!-- Save Status Message -->
+  <div id="saveStatus" style="margin-top: 10px; font-weight: bold;"></div>
+  
+</div>
+
+<!-- Generated Output -->
+<div id="outputSection" style="display:none;">
+  <h2>Generated Outputs</h2>
+  <div id="generatedOutput"></div>
+</div>
+
+<h2>Current Prompts</h2>
+<table id="currentPromptTable">
+  <thead>
+    <tr>
+      <th>Quiz</th><th>Personality</th><th>Type</th><th>Language</th><th>Prompt</th><th>LLM</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<h2>Previous Prompts</h2>
+<table id="previousPromptTable">
+  <thead>
+    <tr>
+      <th>Quiz</th><th>Personality</th><th>Type</th><th>Language</th><th>Prompt</th><th>LLM</th><th>Version</th><th>Action</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script src="{{ url_for('static', filename='prompt_lab/prompt_lab.js') }}"></script>
+
+{% endblock %}

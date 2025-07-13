@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}Users{% endblock %}
+{% block content %}
+
+<h1>👥 Users</h1>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='users/users.css') }}">
+
+<div class="users-container">
+  <table id="userTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Joined On</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody">
+      <!-- JS will populate users here -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  async function loadUsers() {
+    const res = await fetch("/api/users");
+    const users = await res.json();
+    const tbody = document.getElementById("userTableBody");
+    tbody.innerHTML = "";
+
+    users.forEach(user => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${user.id}</td>
+        <td>${user.email}</td>
+        <td>${user.name || "-"}</td>
+        <td>${new Date(user.created_at).toLocaleDateString()}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadUsers);
+</script>
+
+{% endblock %}

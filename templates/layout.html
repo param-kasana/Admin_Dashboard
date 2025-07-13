@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Admin{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .admin-container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #0e122f;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      flex-shrink: 0;
+    }
+
+    .sidebar h2.logo {
+      font-size: 22px;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0; 
+    }
+
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul li a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0; 
+    }
+
+    .sidebar ul li a:hover {
+      color: #fff;
+    }
+
+    .sidebar ul li .submenu-arrow {
+      margin-left: auto;
+      font-size: 12px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .sidebar ul li .submenu-arrow.open {
+      transform: rotate(180deg);
+    }
+
+    .sidebar ul li ul.submenu {
+      list-style-type: none;
+      padding-left: 25px;
+      margin-top: 5px; 
+    }
+
+    .sidebar ul li ul.submenu li {
+      margin-bottom: 8px;
+    }
+
+    .sidebar ul li ul.submenu li a {
+      font-size: 15px;
+      color: #bbb; 
+    }
+    
+    .sidebar ul li ul.submenu li a:hover {
+      color: #fff;
+    }
+
+    .sidebar .menu-items { 
+        flex-grow: 1;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      padding-top: 20px; 
+    }
+
+    .sidebar .logout a {
+      color: #ccc;
+      font-size: 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .main-panel {
+      flex-grow: 1;
+      background-color: #f9f9f9;
+      padding: 30px;
+      font-size: 16px;
+      color: #333;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="sidebar">
+      <div> <!-- Wrapper for logo and menu items -->
+        <h2 class="logo">ADMIN PORTAL</h2>
+        <ul class="menu-items">
+          <li><a href="/dashboard"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+          <li><a href="/users"><i class="fa fa-users"></i> Users</a></li>
+          
+          <!-- Modified Email Link -->
+          <li>
+            <a href="#" class="submenu-toggle">
+              <i class="fa fa-envelope"></i> Email
+              <i class="fa fa-chevron-down submenu-arrow"></i>
+            </a>
+            <ul class="submenu" style="display: none;">
+              <li><a href="/email-composer"><i class="fa fa-paper-plane"></i>Email Composer</a></li>
+              <li><a href="/generate_email"><i class="fa fa-cogs"></i> Email Prompt Lab</a></li>
+            </ul>
+          </li>
+          <!-- End of Modified Email Link -->
+
+          <li><a href="/prompt-lab"><i class="fa fa-magic"></i> Prompt Studio</a></li>
+        </ul>
+      </div>
+      <div class="logout">
+        <a href="/logout"><i class="fa fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+
+    <div class="main-panel">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+      submenuToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          const submenu = this.nextElementSibling;
+          const arrow = this.querySelector('.submenu-arrow');
+
+          if (submenu && submenu.classList.contains('submenu')) {
+            if (submenu.style.display === 'none' || submenu.style.display === '') {
+              submenu.style.display = 'block';
+              if (arrow) arrow.classList.add('open');
+            } else {
+              submenu.style.display = 'none';
+              if (arrow) arrow.classList.remove('open');
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

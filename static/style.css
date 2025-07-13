@@ -1,0 +1,41 @@
+body {
+  display: flex;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 220px;
+  background: #2c3e50;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #ecf0f1;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  color: #bdc3c7;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: white;
+}
+
+.main-content {
+  padding: 30px;
+  flex-grow: 1;
+  background-color: #f9f9f9;
+}

@@ -13,6 +13,25 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .animated-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,0,150,0.5), rgba(0,204,255,0.5), rgba(0,255,135,0.5));
+      background-size: 200% 200%;
+      animation: moveBackground 5s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveBackground {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
     .login-box {
@@ -24,12 +43,15 @@
       border-radius: 20px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
+      position: relative;
+      z-index: 1;
     }
 
     .login-box h2 {
       margin-bottom: 20px;
       font-size: 24px;
       font-weight: bold;
+      font-family: 'Cursive', serif;
     }
 
     .form-group {
@@ -46,6 +68,7 @@
       border: 1px solid #ccc;
       font-size: 15px;
       box-sizing: border-box;
+      font-family: 'Cursive', serif;
     }
 
     .form-group i {
@@ -66,6 +89,7 @@
       font-weight: bold;
       border-radius: 999px;
       cursor: pointer;
+      font-family: 'Cursive', serif;
     }
 
     .login-box p {
@@ -77,10 +101,12 @@
       font-weight: bold;
       text-decoration: none;
       color: #0e122f;
+      font-family: 'Cursive', serif;
     }
   </style>
 </head>
 <body>
+  <div class="animated-background"></div>
   <div class="login-box">
     <h2>Login</h2>
     <form method="POST">
@@ -94,6 +120,7 @@
       </div>
       <button type="submit">Login</button>
     </form>
+    <p><a href="/forgot-password">Forgot Password?</a></p>
   </div>
 </body>
 </html>
